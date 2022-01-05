@@ -44,7 +44,7 @@ def fmt_help(update: Update, context: CallbackContext):
 __mod_name__ = 'Formatting'
 
 def get_help(chat):
-    return Hello Bruh
+    return "Hello Bruh"
     [
         InlineKeyboardButton(text="Markdown", callback_data="fmt_help_md"),
         InlineKeyboardButton(text="Filling", callback_data="fmt_help_filling")
