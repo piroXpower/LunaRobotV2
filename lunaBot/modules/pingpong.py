@@ -7,7 +7,7 @@ from pyrogram import *
 PM_TEXT = "HEY THERE ME MINI MANAGERBOT CREATED BY [TEAM-RAICHU](T.ME/XRAICHU_OFFICIAL) FOR BETTER MANAGEMENT OF GROUP AND ALSO TO MAKE BOT SMALL AND ATTRACTIVE"
 START_BUTTON = [
       [
-        InlineKeyboardButton("ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ", url="t.me/{BOT_USERNAME}?startgroup=true") 
+        InlineKeyboardButton("ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ", url="t.me/RaichuxManagerbot?startgroup=true") 
       ], 
       [           
         InlineKeyboardButton("Gʀᴏᴜᴘ", url="t.me/xraichu_official"),
