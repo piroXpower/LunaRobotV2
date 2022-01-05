@@ -53,6 +53,7 @@ async def cbstart(_, query: CallbackQuery):
                    InlineKeyboardButton("Back", callback_data="backhome"), 
                 ]
             ]
+) 
 @bot.on_message(filters.command("newstar") & filters.private)
 def start(bot, message):
     text = PM_TEXT
