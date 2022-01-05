@@ -1,5 +1,6 @@
 from pyrogram import Client as bot
 from pyrogram import filters
+from pyrogram.types import CallbackQuery
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import *
 
