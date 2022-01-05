@@ -3,7 +3,6 @@ from lunaBot import ALLOW_EXCL
 from lunaBot import DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES
 
 from telegram import Update
-from lunaBot import dispatcher as d, log
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters, CallbackQueryHandler
 from pyrate_limiter import (
     BucketFullException,
