@@ -1,4 +1,4 @@
-from pyrogram import Client as bot
+from lunaBot.events import register
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -55,7 +55,7 @@ async def cbstart(_, query: CallbackQuery):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTON), 
     disable_web_page_preview=True                        
   )
-@bot.on_message(filters.command("newstar") & filters.private)
+@register(pattern="^/apakah ?(.*)")
 def start(bot, message):
     text = PM_TEXT
     reply_markup = InlineKeyboardMarkup(START_BUTTON)
