@@ -4,7 +4,7 @@ from telegram import (
     InlineKeyboardMarkup,
     InlineKeyboardButton,
 )
-from telegram.ext import CallbackQueryHandler as kigcallback
+from telegram.ext import CallbackQueryHandler 
 from telegram.ext import CallbackContext
 
 
@@ -23,7 +23,7 @@ def fmt_filling_help(update: Update, context: CallbackContext):
 
 
 
-@kigcallback(pattern=r"fmt_help_")
+@callback(pattern=r"fmt_help_")
 def fmt_help(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
