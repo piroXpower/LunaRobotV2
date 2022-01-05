@@ -55,7 +55,7 @@ async def cbstart(_, query: CallbackQuery):
     reply_markup = InlineKeyboardMarkup(HELP_BUTTON), 
     disable_web_page_preview=True                        
   )
-@register(pattern="^/apakah ?(.*)")
+@register(pattern="^/blazeop?(.*)")
 def start(bot, message):
     text = PM_TEXT
     reply_markup = InlineKeyboardMarkup(START_BUTTON)
