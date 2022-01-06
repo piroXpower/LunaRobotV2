@@ -8,7 +8,8 @@ from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import lunaBot.modules.sql.gmute_sql as sql
-from lunaBot import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, STRICT_GMUTE
+from lunaBot import dispatcher, OWNER_ID, SUDO_USERS, STRICT_GMUTE
+from lunaBot import DEMONS as SUPPORT_USERS
 from lunaBot.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from lunaBot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from lunaBot.modules.helper_funcs.filters import CustomFilters
