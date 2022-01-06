@@ -59,6 +59,6 @@ async def cbstart(_, query: CallbackQuery):
 def start(bot, message):
     await message.Reply_text(
     text=PM_TEXT
-    reply_markup=reply_markup,
+    reply_markup=InlineKeyboardMarkup(START_BUTTON),
     disable_web_page_preview=True                        
   )
