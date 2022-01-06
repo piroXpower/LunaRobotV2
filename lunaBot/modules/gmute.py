@@ -8,7 +8,7 @@ from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import lunaBot.modules.sql.gmute_sql as sql
-from lunaBot import dispatcher, OWNER_ID,
+from lunaBot import dispatcher, OWNER_ID
 from lunaBot import STRICT_MUTE as STRICT_GMUTE
 from lunaBot import DEMONS as SUPPORT_USERS
 from lunaBot import DEV_USERS as SUDO_USERS
