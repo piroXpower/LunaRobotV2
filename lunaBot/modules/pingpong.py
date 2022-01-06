@@ -57,10 +57,8 @@ async def cbstart(_, query: CallbackQuery):
   )
 @register(pattern="^/blazeop?(.*)")
 def start(bot, message):
-    text = PM_TEXT
-    reply_markup = InlineKeyboardMarkup(START_BUTTON)
-    message.reply(
-    text=text,
+    await message.Reply_text(
+    text=PM_TEXT
     reply_markup=reply_markup,
     disable_web_page_preview=True                        
   )
