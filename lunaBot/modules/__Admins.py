@@ -125,7 +125,7 @@ def fud_help(update: Update, context: CallbackContext):
     )
     bot.answer_callback_query(query.id)
 
-__help__
+__help__ =
 def get_help(chat):
     return [gs(chat, "admin_help"),
     [
