@@ -30,7 +30,7 @@ def add_mod(chat_id, user_id):
         SESSION.commit()
 
 
-def is__mod(chat_id, user_id):
+def is_mod(chat_id, user_id):
     try:
         return SESSION.query(Moderators).get((str(chat_id), user_id))
     finally:
