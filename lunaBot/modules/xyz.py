@@ -118,9 +118,9 @@ APPROVE = DisableAbleCommandHandler("addmod", add_mod)
 DISAPPROVE = DisableAbleCommandHandler("unmod", dis_mod)
 APPROVED = DisableAbleCommandHandler("mods", is_mod)
 
-dispatcher.add_handler(addmod)
-dispatcher.add_handler(unmod)
-dispatcher.add_handler(mods)
+dispatcher.add_handler(ADDMOD)
+dispatcher.add_handler(UNMOD)
+dispatcher.add_handler(MODS)
 
 __mod_name__ = "ᴍᴏᴅs"
 __command_list__ = ["add_mod", "dis_mod", "is_mod"]
