@@ -75,7 +75,7 @@ class KigyoTelegramHandler:
 
     def callbackquery(self, pattern: str = None, run_async: bool = True):
         def _callbackquery(func):
-            self._dispatcher.add_handler(CallbackQueryHandler(pattern=pattern, callback=func, run_async=run_async))
+            self._dispatcher.add_handler(CallbackQueryHandler(pattern=pattern, callback=func))
             log.debug(f'[KIGCALLBACK] Loaded callbackquery handler with pattern {pattern} for function {func.__name__}')
             return func
 
