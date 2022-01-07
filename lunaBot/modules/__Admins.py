@@ -1,4 +1,4 @@
-__mod_name__ = "Admins"
+
 
 from lunaBot.modules.language import gs
 from telegram.ext import CallbackContext
@@ -125,7 +125,8 @@ def fud_help(update: Update, context: CallbackContext):
     )
     bot.answer_callback_query(query.id)
 
-__help__ =
+__mod_name__ = "Admins"
+
 def get_help(chat):
     return [gs(chat, "admin_help"),
     [
