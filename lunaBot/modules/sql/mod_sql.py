@@ -6,7 +6,7 @@ from lunaBot.modules.sql import BASE, SESSION
 
 
 class Moderators(BASE):
-    __tablename__ = "approval"
+    __tablename__ = "Moderators"
     chat_id = Column(String(14), primary_key=True)
     user_id = Column(BigInteger, primary_key=True)
 
