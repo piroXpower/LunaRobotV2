@@ -102,7 +102,7 @@ def is_mod(update, context):
     chat_title = message.chat.title
     chat = update.effective_chat
     msg = "The following users are moderaors.\n"
-    approved_users = sql.list_approved(message.chat_id)
+    approved_users = sql.list_mods(message.chat_id)
     for i in approved_users:
         member = chat.get_member(int(i.user_id))
         msg += f"- `{i.user_id}`: {member.user['first_name']}\n"
