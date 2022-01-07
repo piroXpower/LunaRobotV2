@@ -9,6 +9,8 @@ from lunaBot.modules.log_channel import loggable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
+
+
 @loggable
 @user_admin
 @run_async
@@ -111,106 +113,15 @@ def is_mod(update, context):
         message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
 
 
-@user_admin
-@run_async
-def approval(update, context):
-    message = update.effective_message
-    chat = update.effective_chat
-    args = context.args
-    user_id = extract_user(message, args)
-    member = chat.get_member(int(user_id))
-    if not user_id:
-        message.reply_text(
-            "I don't know who you're talking about, you're going to need to specify a user!"
-        )
-        return ""
-    if sql.is_approved(message.chat_id, user_id):
-        message.reply_text(
-            f"{member.user['first_name']} is an approved user. Locks, antiflood, and blocklists won't apply to them."
-        )
-    else:
-        message.reply_text(
-            f"{member.user['first_name']} is not an approved user. They are affected by normal commands."
-        )
 
+APPROVE = DisableAbleCommandHandler("addmod", add_mod)
+DISAPPROVE = DisableAbleCommandHandler("unmod", dis_mod)
+APPROVED = DisableAbleCommandHandler("mods", is_mod)
 
-@run_async
-def unapproveall(update: Update, context: CallbackContext):
-    chat = update.effective_chat
-    user = update.effective_user
-    member = chat.get_member(user.id)
-    if member.status != "creator" and user.id not in DRAGONS:
-        update.effective_message.reply_text(
-            "Only the chat owner can unapprove all users at once."
-        )
-    else:
-        buttons = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Unapprove all users", callback_data="unapproveall_user"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
-                        text="Cancel", callback_data="unapproveall_cancel"
-                    )
-                ],
-            ]
-        )
-        update.effective_message.reply_text(
-            f"Are you sure you would like to unapprove ALL users in {chat.title}? This action cannot be undone.",
-            reply_markup=buttons,
-            parse_mode=ParseMode.MARKDOWN,
-        )
+dispatcher.add_handler(addmod)
+dispatcher.add_handler(unmod)
+dispatcher.add_handler(mods)
 
-
-@run_async
-def unapproveall_btn(update: Update, context: CallbackContext):
-    query = update.callback_query
-    chat = update.effective_chat
-    message = update.effective_message
-    member = chat.get_member(query.from_user.id)
-    if query.data == "unapproveall_user":
-        if member.status == "creator" or query.from_user.id in DRAGONS:
-            users = []
-            approved_users = sql.list_approved(chat.id)
-            for i in approved_users:
-                users.append(int(i.user_id))
-            for user_id in users:
-                sql.disapprove(chat.id, user_id)
-
-        if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
-
-        if member.status == "member":
-            query.answer("You need to be admin to do this.")
-    elif query.data == "unapproveall_cancel":
-        if member.status == "creator" or query.from_user.id in DRAGONS:
-            message.edit_text("Removing of all approved users has been cancelled.")
-            return ""
-        if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
-        if member.status == "member":
-            query.answer("You need to be admin to do this.")
-
-
-
-
-APPROVE = DisableAbleCommandHandler("approve", approve)
-DISAPPROVE = DisableAbleCommandHandler("unapprove", disapprove)
-APPROVED = DisableAbleCommandHandler("approved", approved)
-APPROVAL = DisableAbleCommandHandler("approval", approval)
-UNAPPROVEALL = DisableAbleCommandHandler("unapproveall", unapproveall)
-UNAPPROVEALL_BTN = CallbackQueryHandler(unapproveall_btn, pattern=r"unapproveall_.*")
-
-dispatcher.add_handler(APPROVE)
-dispatcher.add_handler(DISAPPROVE)
-dispatcher.add_handler(APPROVED)
-dispatcher.add_handler(APPROVAL)
-dispatcher.add_handler(UNAPPROVEALL)
-dispatcher.add_handler(UNAPPROVEALL_BTN)
-
-__mod_name__ = "ᴀᴘᴘʀᴏᴠᴇ"
-__command_list__ = ["approve", "unapprove", "approved", "approval"]
-__handlers__ = [APPROVE, DISAPPROVE, APPROVED, APPROVAL]
+__mod_name__ = "ᴍᴏᴅs"
+__command_list__ = ["add_mod", "dis_mod", "is_mod"]
+__handlers__ = [ADDMOD, UNMOD, MODS]
