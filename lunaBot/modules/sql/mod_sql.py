@@ -5,8 +5,8 @@ from sqlalchemy import Column, String, UnicodeText, BigInteger, func, distinct
 from lunaBot.modules.sql import BASE, SESSION
 
 
-class Moderators(BASE):
-    __tablename__ = "Moderators"
+class Approoals(BASE):
+    __tablename__ = "approoal"
     chat_id = Column(String(14), primary_key=True)
     user_id = Column(BigInteger, primary_key=True)
 
@@ -15,33 +15,33 @@ class Moderators(BASE):
         self.user_id = user_id
 
     def __repr__(self):
-        return "<add_mod %s>" % self.user_id
+        return "<Approoe %s>" % self.user_id
 
 
-Moderators.__table__.create(checkfirst=True)
+Approoals.__table__.create(checkfirst=True)
 
-MODS_INSERTION_LOCK = threading.RLock()
+APPROOE_INSERTION_LOCK = threading.RLock()
 
 
-def add_mod(chat_id, user_id):
-    with MODS_INSERTION_LOCK:
-        add_mod_user = Moderators(str(chat_id), user_id)
-        SESSION.add(add_mod_user)
+def approoe(chat_id, user_id):
+    with APPROOE_INSERTION_LOCK:
+        approoe_user = Approoals(str(chat_id), user_id)
+        SESSION.add(approoe_user)
         SESSION.commit()
 
 
-def is_mod(chat_id, user_id):
+def is_approoed(chat_id, user_id):
     try:
-        return SESSION.query(Moderators).get((str(chat_id), user_id))
+        return SESSION.query(Approoals).get((str(chat_id), user_id))
     finally:
         SESSION.close()
 
 
-def dis_mod(chat_id, user_id):
-    with MODS_INSERTION_LOCK:
-        disadd_mod_user = SESSION.query(Moderators).get((str(chat_id), user_id))
-        if disadd_mod_user:
-            SESSION.delete(disadd_mod_user)
+def disapprooe(chat_id, user_id):
+    with APPROOE_INSERTION_LOCK:
+        disapprooe_user = SESSION.query(Approoals).get((str(chat_id), user_id))
+        if disapprooe_user:
+            SESSION.delete(disapprooe_user)
             SESSION.commit()
             return True
         else:
@@ -49,12 +49,12 @@ def dis_mod(chat_id, user_id):
             return False
 
 
-def list_moderators(chat_id):
+def list_approoed(chat_id):
     try:
         return (
-            SESSION.query(Moderators)
-            .filter(Moderators.chat_id == str(chat_id))
-            .order_by(Moderators.user_id.asc())
+            SESSION.query(Approoals)
+            .filter(Approoals.chat_id == str(chat_id))
+            .order_by(Approoals.user_id.asc())
             .all()
         )
     finally:
