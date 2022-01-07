@@ -63,6 +63,7 @@ fontTools
 bing_image_downloader
 search_engine_parser
 pytz
+pyYAML>=5.1.2
 lyricsgenius
 tswift
 envparse
