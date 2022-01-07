@@ -2,7 +2,7 @@ __mod_name__ = "Admins"
 
 from lunaBot.modules.language import gs
 from telegram.ext import CallbackContext
-from lunaBot.modules.helper_funcs.decorators import kigcmd, kigcallback
+from lunaBot.modules.helper_funcs.dc import kigcmd, kigcallback
 from lunaBot.modules.helper_funcs.string_handling import markdown_parser
 from lunaBot import (
     dispatcher, 
