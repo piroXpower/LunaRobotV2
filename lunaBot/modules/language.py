@@ -8,7 +8,7 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from lunaBot import dispatcher
 import lunaBot.modules.sql.language_sql as sql
 from lunaBot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
-from lunaBot.langs import get_string, get_languages, get_language
+from lunaBot.lunaBot.langs import get_string, get_languages, get_language
 
 
 
