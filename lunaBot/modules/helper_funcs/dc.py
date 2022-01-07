@@ -1,7 +1,8 @@
 from lunaBot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, InlineQueryHandler
 from telegram.ext.filters import BaseFilter
-from lunaBot import dispatcher as d, log
+from lunaBot import dispatcher as d
+from lunaBot import dispatcher as logging as log  
 from typing import Optional, Union, List
 
 
