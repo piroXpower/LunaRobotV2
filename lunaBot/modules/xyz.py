@@ -114,9 +114,9 @@ def is_mod(update, context):
 
 
 
-APPROVE = DisableAbleCommandHandler("addmod", add_mod)
-DISAPPROVE = DisableAbleCommandHandler("unmod", dis_mod)
-APPROVED = DisableAbleCommandHandler("mods", is_mod)
+ADDMOD = DisableAbleCommandHandler("addmod", add_mod)
+UNMOD = DisableAbleCommandHandler("unmod", dis_mod)
+MODS = DisableAbleCommandHandler("mods", is_mod)
 
 dispatcher.add_handler(ADDMOD)
 dispatcher.add_handler(UNMOD)
