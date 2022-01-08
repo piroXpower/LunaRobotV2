@@ -28,20 +28,20 @@ def approoe(update, context):
         member = chat.get_member(user_id)
     except BadRequest:
         return ""
-    if member.status == "creator":
+    if member.status == "administrator" or member.status == "creator":
         message.reply_text(
-            "User is already admin - locks, blocklists, and antiflood already don't apply to them."
+            "User is already admin - Can't Set Admins As Moderator."
         )
         return ""
     if sql.is_approoed(message.chat_id, user_id):
         message.reply_text(
-            f"[{member.user['first_name']}](tg://user?id={member.user['id']}) is already approved in {chat_title}",
+            f"[{member.user['first_name']}](tg://user?id={member.user['id']}) is already Moderator in {chat_title}",
             parse_mode=ParseMode.MARKDOWN,
         )
         return ""
     sql.approoe(message.chat_id, user_id)
     message.reply_text(
-        f"[{member.user['first_name']}](tg://user?id={member.user['id']}) has been approved in {chat_title}! They will now be ignored by automated admin actions like locks, blocklists, and antiflood.",
+        f"[{member.user['first_name']}](tg://user?id={member.user['id']}) has been Promoted To Moderator in {chat_title}! They can now use All Admin rights except promote User.",
         parse_mode=ParseMode.MARKDOWN,
     )
     log_message = (
@@ -73,15 +73,15 @@ def disapprooe(update, context):
         member = chat.get_member(user_id)
     except BadRequest:
         return ""
-    if member.status == "creator":
-        message.reply_text("This user is an admin, they can't be unapproved.")
+    if member.status == "administrator" or member.status == "creator":
+        message.reply_text("This user is an admin, they can't be Promoted To Moderator.")
         return ""
     if not sql.is_approoed(message.chat_id, user_id):
-        message.reply_text(f"{member.user['first_name']} isn't approved yet!")
+        message.reply_text(f"{member.user['first_name']} isn't Moderator yet!")
         return ""
     sql.disapprooe(message.chat_id, user_id)
     message.reply_text(
-        f"{member.user['first_name']} is no longer approved in {chat_title}."
+        f"{member.user['first_name']} is no longer Moderator in {chat_title}."
     )
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
@@ -99,7 +99,7 @@ def approoed(update, context):
     message = update.effective_message
     chat_title = message.chat.title
     chat = update.effective_chat
-    msg = "The following users are approoed.\n"
+    msg = "The following users are Moderators.\n"
     approoed_users = sql.list_approoed(message.chat_id)
     for i in approoed_users:
         member = chat.get_member(int(i.user_id))
@@ -126,11 +126,11 @@ def approoal(update, context):
         return ""
     if sql.is_approoed(message.chat_id, user_id):
         message.reply_text(
-            f"{member.user['first_name']} is an approved user. Locks, antiflood, and blocklists won't apply to them."
+            f"{member.user['first_name']} is an Mod user.They Are As Powerful As Admin in This Chat."
         )
     else:
         message.reply_text(
-            f"{member.user['first_name']} is not an approved user. They are affected by normal commands."
+            f"{member.user['first_name']} is not an Mod user. They are Normal. user."
         )
 
 
@@ -195,7 +195,19 @@ def unapprooeall_btn(update: Update, context: CallbackContext):
             query.answer("You need to be admin to do this.")
 
 
+__help__ =
+"""
 
+Sometimes, you don't trust but want to make user manager of your group then you can make him/her moderator.
+Maybe not enough to make them admin, but you might be ok with ban, mute, and warn not.
+That's what modcheck are for - mod of trustworthy users to allow to manage your group.
+Admin commands:
+- /modcheck: Check a user's modcheck status in this chat.
+- /mod: mod of a user can ban, mute, and warn.
+- /unmod: Unmod of a user. They will now can't ban, mute and warn anyone.
+- /modlist: List all mod users.
+- /unmodall: Unmod ALL users in a chat. This cannot be undone. 
+"""
 
 ADDMOD = DisableAbleCommandHandler("addmod", approoe)
 UNMOD = DisableAbleCommandHandler("unmod", disapprooe)
