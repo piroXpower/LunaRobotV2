@@ -26,6 +26,7 @@ from lunaBot.modules.helper_funcs.extraction import (
     extract_user_and_text,
 )
 from lunaBot.modules.log_channel import loggable
+from lunaBot.modules.sql.mod_sql import is_approoed
 from lunaBot.modules.helper_funcs.alternate import send_message
 from lunaBot.modules.helper_funcs.alternate import typing_action
 
