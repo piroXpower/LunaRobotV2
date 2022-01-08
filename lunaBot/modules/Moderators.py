@@ -3,7 +3,7 @@ from lunaBot.modules.disable import DisableAbleCommandHandler
 from lunaBot import dispatcher, DRAGONS
 from lunaBot.modules.helper_funcs.extraction import extract_user
 from telegram.ext import CallbackContext, CallbackQueryHandler, Filters, run_async
-import lunaBot.modules.sql.approve_sql as sql
+import lunaBot.modules.sql.mod_sql as sql
 from lunaBot.modules.helper_funcs.chat_status import user_admin
 from lunaBot.modules.log_channel import loggable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
@@ -197,11 +197,11 @@ def unapprooeall_btn(update: Update, context: CallbackContext):
 
 
 
-ADDMOD = DisableAbleCommandHandler("approve", approve)
-UNMOD = DisableAbleCommandHandler("unapprove", disapprove)
-LISTMOD = DisableAbleCommandHandler("approved", approved)
-MODCHECK = DisableAbleCommandHandler("approval", approval)
-UNMODALL = DisableAbleCommandHandler("unapproveall", unapproveall)
+ADDMOD = DisableAbleCommandHandler("addmod", approve)
+UNMOD = DisableAbleCommandHandler("unmod", disapprove)
+LISTMOD = DisableAbleCommandHandler("listmod", approved)
+MODCHECK = DisableAbleCommandHandler("modcheck", approval)
+UNMODALL = DisableAbleCommandHandler("unmodall", unapproveall)
 UNAPPROOALL_BTN = CallbackQueryHandler(unapprooeall_btn, pattern=r"unapprooeall_.*")
 
 dispatcher.add_handler(ADDMOD)
@@ -211,6 +211,6 @@ dispatcher.add_handler(MODCHECK)
 dispatcher.add_handler(UNMODALL)
 dispatcher.add_handler(UNAPPROOALL_BTN)
 
-__mod_name__ = "Moderator.py"
+__mod_name__ = "Moderator"
 __command_list__ = ["approve", "unapprove", "approved", "approval"]
 __handlers__ = [ADDMOD, UNMOD, LISTMOD, MODCHECK]
