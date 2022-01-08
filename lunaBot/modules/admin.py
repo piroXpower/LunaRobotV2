@@ -26,7 +26,7 @@ from lunaBot.modules.helper_funcs.extraction import (
     extract_user_and_text,
 )
 from lunaBot.modules.log_channel import loggable
-from lunaBot.modules.sql.mod_sql import is_approoed
+from lunaBot.modules.sql.mod_sql import approoed
 from lunaBot.modules.helper_funcs.alternate import send_message
 from lunaBot.modules.helper_funcs.alternate import typing_action
 
@@ -428,7 +428,7 @@ def __chat_settings__(chat_id, user_id):
 @run_async
 @bot_admin
 @can_pin
-@is_approoed
+@approoed
 @user_admin
 @loggable
 def pin(update: Update, context: CallbackContext) -> str:
@@ -475,7 +475,7 @@ def pin(update: Update, context: CallbackContext) -> str:
 @run_async
 @bot_admin
 @can_pin
-@is_approoed
+@approoed
 @user_admin
 @loggable
 def unpin(update: Update, context: CallbackContext) -> str:
@@ -502,7 +502,7 @@ def unpin(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @bot_admin
-@is_approoed
+@approoed
 @user_admin
 @connection_status
 def invite(update: Update, context: CallbackContext):
