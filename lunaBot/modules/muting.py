@@ -2,7 +2,7 @@ import html
 from typing import Optional
 
 from lunaBot import LOGGER, TIGERS, dispatcher
-from lunaBot.modules.sql.mod_sql import is_approoed
+from lunaBot.modules.sql.mod_sql import approoed
 from lunaBot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
@@ -49,7 +49,7 @@ def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
 
 @run_async
 @connection_status
-@is_approoed
+@approoed
 @bot_admin
 @user_admin
 @loggable
@@ -99,7 +99,7 @@ def mute(update: Update, context: CallbackContext) -> str:
 @run_async
 @connection_status
 @bot_admin
-@is_approoed
+@approoed
 @user_admin
 @loggable
 def unmute(update: Update, context: CallbackContext) -> str:
@@ -163,7 +163,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
 @run_async
 @connection_status
 @bot_admin
-@is_approoed
+@approoed
 @can_restrict
 @user_admin
 @loggable
