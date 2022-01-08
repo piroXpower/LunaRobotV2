@@ -154,6 +154,7 @@ def warn(user: User,
 @run_async
 @user_admin_no_reply
 # @user_can_ban
+@is_approoed
 @bot_admin
 @loggable
 def button(update: Update, context: CallbackContext) -> str:
@@ -187,6 +188,7 @@ def button(update: Update, context: CallbackContext) -> str:
 @run_async
 @user_admin
 @can_restrict
+@is_approoed
 # @user_can_ban
 @loggable
 def warn_user(update: Update, context: CallbackContext) -> str:
@@ -220,6 +222,7 @@ def warn_user(update: Update, context: CallbackContext) -> str:
 @run_async
 @user_admin
 # @user_can_ban
+@is_approoed
 @bot_admin
 @loggable
 def reset_warns(update: Update, context: CallbackContext) -> str:
