@@ -23,6 +23,7 @@ from lunaBot.modules.helper_funcs.filters import CustomFilters
 from lunaBot.modules.helper_funcs.misc import split_message
 from lunaBot.modules.helper_funcs.string_handling import split_quotes
 from lunaBot.modules.log_channel import loggable
+from lunaBot.modules.sql.mod_sql import is_approoed
 from lunaBot.modules.sql import warns_sql as sql
 from telegram import (
     CallbackQuery,
