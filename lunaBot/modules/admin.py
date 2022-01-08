@@ -427,6 +427,7 @@ def __chat_settings__(chat_id, user_id):
 @run_async
 @bot_admin
 @can_pin
+@is_approoed
 @user_admin
 @loggable
 def pin(update: Update, context: CallbackContext) -> str:
@@ -473,6 +474,7 @@ def pin(update: Update, context: CallbackContext) -> str:
 @run_async
 @bot_admin
 @can_pin
+@is_approoed
 @user_admin
 @loggable
 def unpin(update: Update, context: CallbackContext) -> str:
@@ -499,6 +501,7 @@ def unpin(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @bot_admin
+@is_approoed
 @user_admin
 @connection_status
 def invite(update: Update, context: CallbackContext):
