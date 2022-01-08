@@ -3,7 +3,7 @@ import html
 from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
-from lunaBot.modules.sql.mod_sql import is_approoed
+from lunaBot.modules.sql.mod_sql import approoed
 from telegram.utils.helpers import mention_html
 
 from lunaBot import (
@@ -38,7 +38,7 @@ from lunaBot.modules.log_channel import gloggable, loggable
 @bot_admin
 @can_restrict
 @user_admin
-@is_approoed
+@approoed
 @user_can_ban
 @loggable
 def ban(update: Update, context: CallbackContext) -> str:
@@ -145,7 +145,7 @@ def ban(update: Update, context: CallbackContext) -> str:
 @connection_status
 @bot_admin
 @can_restrict
-@is_approoed
+@approoed
 @user_admin
 @user_can_ban
 @loggable
@@ -236,7 +236,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
 @bot_admin
 @can_restrict
 @user_admin
-@is_approoed
+@approoed
 @user_can_ban
 @loggable
 def punch(update: Update, context: CallbackContext) -> str:
@@ -313,7 +313,7 @@ def punchme(update: Update, context: CallbackContext):
 @bot_admin
 @can_restrict
 @user_admin
-@is_approoed
+@approoed
 @user_can_ban
 @loggable
 def unban(update: Update, context: CallbackContext) -> str:
