@@ -48,6 +48,7 @@ def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
 
 @run_async
 @connection_status
+@is_approoed
 @bot_admin
 @user_admin
 @loggable
@@ -97,6 +98,7 @@ def mute(update: Update, context: CallbackContext) -> str:
 @run_async
 @connection_status
 @bot_admin
+@is_approoed
 @user_admin
 @loggable
 def unmute(update: Update, context: CallbackContext) -> str:
@@ -160,6 +162,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
 @run_async
 @connection_status
 @bot_admin
+@is_approoed
 @can_restrict
 @user_admin
 @loggable
