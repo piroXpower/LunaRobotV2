@@ -197,11 +197,11 @@ def unapprooeall_btn(update: Update, context: CallbackContext):
 
 
 
-ADDMOD = DisableAbleCommandHandler("addmod", approve)
-UNMOD = DisableAbleCommandHandler("unmod", disapprove)
-LISTMOD = DisableAbleCommandHandler("listmod", approved)
-MODCHECK = DisableAbleCommandHandler("modcheck", approval)
-UNMODALL = DisableAbleCommandHandler("unmodall", unapproveall)
+ADDMOD = DisableAbleCommandHandler("addmod", approoe)
+UNMOD = DisableAbleCommandHandler("unmod", disapprooe)
+LISTMOD = DisableAbleCommandHandler("listmod", approoed)
+MODCHECK = DisableAbleCommandHandler("modcheck", approoal)
+UNMODALL = DisableAbleCommandHandler("unmodall", unapprooeall)
 UNAPPROOALL_BTN = CallbackQueryHandler(unapprooeall_btn, pattern=r"unapprooeall_.*")
 
 dispatcher.add_handler(ADDMOD)
@@ -212,5 +212,5 @@ dispatcher.add_handler(UNMODALL)
 dispatcher.add_handler(UNAPPROOALL_BTN)
 
 __mod_name__ = "Moderator"
-__command_list__ = ["approve", "unapprove", "approved", "approval"]
+__command_list__ = ["approoe", "unapprooe", "approoed", "approoal"]
 __handlers__ = [ADDMOD, UNMOD, LISTMOD, MODCHECK]
