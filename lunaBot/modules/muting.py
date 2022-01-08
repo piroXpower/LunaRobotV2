@@ -2,6 +2,7 @@ import html
 from typing import Optional
 
 from lunaBot import LOGGER, TIGERS, dispatcher
+from lunaBot.modules.sql.mod_sql import is_approoed
 from lunaBot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
