@@ -23,7 +23,7 @@ from lunaBot.modules.helper_funcs.filters import CustomFilters
 from lunaBot.modules.helper_funcs.misc import split_message
 from lunaBot.modules.helper_funcs.string_handling import split_quotes
 from lunaBot.modules.log_channel import loggable
-from lunaBot.modules.sql.mod_sql import is_approoed
+from lunaBot.modules.sql.mod_sql import approoed
 from lunaBot.modules.sql import warns_sql as sql
 from telegram import (
     CallbackQuery,
@@ -155,7 +155,7 @@ def warn(user: User,
 @run_async
 @user_admin_no_reply
 # @user_can_ban
-@is_approoed
+@approoed
 @bot_admin
 @loggable
 def button(update: Update, context: CallbackContext) -> str:
@@ -189,7 +189,7 @@ def button(update: Update, context: CallbackContext) -> str:
 @run_async
 @user_admin
 @can_restrict
-@is_approoed
+@approoed
 # @user_can_ban
 @loggable
 def warn_user(update: Update, context: CallbackContext) -> str:
@@ -223,7 +223,7 @@ def warn_user(update: Update, context: CallbackContext) -> str:
 @run_async
 @user_admin
 # @user_can_ban
-@is_approoed
+@approoed
 @bot_admin
 @loggable
 def reset_warns(update: Update, context: CallbackContext) -> str:
